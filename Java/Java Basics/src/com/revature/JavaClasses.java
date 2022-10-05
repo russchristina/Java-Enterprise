@@ -24,10 +24,33 @@ public class JavaClasses {
 		Person p = new Person("Christina", 28, 66);
 		Animal a = new Animal();
 		
+		/*
+		 * When you use a super type as the reference type, this is technically called "covariance".
+		 * Animal and Person are "covariant" types.
+		 * 
+		 * It is very common to use the super type in cases like this because it can lead to cleaner
+		 * code and easier refactoring.
+		 */
 		Animal a2 = new Person("Name", 89, 90);
 		
 		p.sleep();
 		a2.sleep();
+		
+		p.driveToWork();
+		/*
+		 * The reference type you use dictates which methods you can call on an object. You are 
+		 * only allowed to call methods that exist on the reference type.
+		 */
+//		a2.driveToWork(); //DOES NOT COMPILE
+		
+		Person p2 = (Person) a2;
+		p2.driveToWork();
+		
+		/*
+		 * Be careful about downcasting. While this does compile, it will throw a ClassCastException
+		 * at runtime. 
+		 */
+		Person p3 = (Person) a;
 	}
 }
 
@@ -38,7 +61,6 @@ public class JavaClasses {
  * Also note that all classes in Java have the "Object" class at the top of their family tree.
  */
 class Person extends Animal{
-	//Object
 	private String name; //object types are null by default
 	private int age; //primitive types point to default values by default (so this int is "0")
 	private int height;
@@ -75,5 +97,12 @@ class Person extends Animal{
 	@Override
 	 public void sleep() {
 		System.out.println("Zzzzzzzz, check FB, Zzzzzzzzzz");
+	}
+	
+	/*
+	 * This method is specific to a person (other animals might not have to deal with this).
+	 */
+	public void driveToWork() {
+		System.out.println("Zzzzzzzz. Oh wait. I'm driving.");
 	}
 }
