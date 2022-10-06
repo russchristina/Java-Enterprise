@@ -19,7 +19,7 @@ public class Lambdas {
 	 * Common functional interfaces include:
 	 * 
 	 * Consumer
-	 * Producer
+	 * Supplier
 	 * Predicate
 	 * BiPredicate
 	 * Function

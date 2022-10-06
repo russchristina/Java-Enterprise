@@ -22,7 +22,14 @@ public class JavaClasses {
 		 * of your own.
 		 */
 		Person p = new Person("Christina", 28, 66);
-		Animal a = new Animal();
+//		Animal a = new Animal(); //DOES NOT COMPILE BECAUSE ANIMAL IS NOW AN ABSTRACT CLASS
+		Edible e = new Person("Sean", 50, 75);
+		NonToxic n = new Person("Kurt", 42, 76);
+		
+		/*
+		 * As a note, you must use your interface (the type) to call the static method.
+		 */
+		Edible.provideMicros();
 		
 		/*
 		 * When you use a super type as the reference type, this is technically called "covariance".
@@ -50,7 +57,7 @@ public class JavaClasses {
 		 * Be careful about downcasting. While this does compile, it will throw a ClassCastException
 		 * at runtime. 
 		 */
-		Person p3 = (Person) a;
+//		Person p3 = (Person) a; //DOESN'T COMPILE BECAUSE I COMMENTED OUT THE VARIABLE DECLARE FOR "a".
 	}
 }
 
@@ -60,7 +67,7 @@ public class JavaClasses {
  * 
  * Also note that all classes in Java have the "Object" class at the top of their family tree.
  */
-class Person extends Animal{
+class Person extends Animal implements NonToxic{
 	private String name; //object types are null by default
 	private int age; //primitive types point to default values by default (so this int is "0")
 	private int height;
@@ -104,5 +111,25 @@ class Person extends Animal{
 	 */
 	public void driveToWork() {
 		System.out.println("Zzzzzzzz. Oh wait. I'm driving.");
+	}
+
+	/*
+	 * If a concrete class inherits abstract methods, it is required to provide an implementation
+	 * for those methods.
+	 */
+	@Override
+	public void beNotPoisonous() {
+		System.out.println("We're not poisonous to a mountain lion.");
+		
+	}
+
+	@Override
+	public void provideMacros() {
+		System.out.println("Carbs, fats, and protein. And also french fries.");
+	}
+	
+	@Override
+	public void breathe() {
+		System.out.println("Breathing");
 	}
 }
