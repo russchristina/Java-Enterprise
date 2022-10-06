@@ -2,8 +2,8 @@ package com.revature;
 
 public class JavaCollections {
 	
-	//Collection
-	//Collections
+	//Collection: Ancestor interface for common collection types such as List, Set, and Queue
+	//Collections: A utility class that contains several static methods for easy manipulation of collection types
 
 	public static void main(String[] args) {
 		
