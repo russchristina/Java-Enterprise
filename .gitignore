@@ -8,6 +8,9 @@ target/
 .settings/
 .metadata/
 
+#Properties files
+application.properties
+
 # Log file
 *.log
 
