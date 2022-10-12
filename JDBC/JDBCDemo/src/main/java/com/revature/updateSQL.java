@@ -5,18 +5,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class updateSQL {
-
-	String def;
-	String name;
-	String state;
-	int age;
+public class updateDB {
 	
-	public void addToDB (String def, String name, String state, int age) {
-		this.def = "default";
-		this.name = name;
-		this.state = state;
-		this.age = age;
+	public static void main(String [] args) {
+
+	String sqlQ = "INSERT INTO employee VALUES (default, 'Sam', 'California', 22)";
+	updateDB uDB = new updateDB();
+	uDB.addToDB(sqlQ);
+	}
+	public void addToDB (String sqlQ) {
 		
 		Statement stmt = null;
 
@@ -27,9 +24,9 @@ public class updateSQL {
 					)) {
 			
 			 stmt = conn.createStatement();
-			 String sql = "INSERT INTO employee VALUES ("+ def +", '" + name + "', '" + state + "', " + age +")";
+			 
 				try {
-					stmt.executeUpdate(sql);
+					stmt.executeUpdate(sqlQ);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -44,23 +41,6 @@ public class updateSQL {
 			}
 			
 		}
-	}
-}
-
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	
-		
+	}
+}//End of Class
