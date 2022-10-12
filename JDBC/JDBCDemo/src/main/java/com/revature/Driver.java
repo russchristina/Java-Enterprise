@@ -31,6 +31,11 @@ public class Driver {
 	 * SQLException (this is a class)
 	 */
 	public static void main(String[] args) {
+		System.out.println("start");
+		System.out.println( updateName(2,"Some name ") ? "worked":"\nNot worked" ); 
+		 
+		System.out.println("done");
+		System.exit(0);
 		/*
 		 * Let's do a standard JDBC workflow in which we connect to our DB, pull out a single
 		 * record, and then close the connection.
@@ -105,6 +110,33 @@ public class Driver {
 				e.printStackTrace();
 			}
 		}
+		
+	}
+	
+	public static boolean updateName(int index,String name) {
+		
+		Statement stmt = null; 
+		final String SQL = "UPDATE person SET person_name = '"+name+"' "
+						+ "WHERE person_id  = "+ index; 
+		try{
+			Connection conn = DriverManager.getConnection(
+				"jdbc:postgresql://localhost:5432/postgres", 
+				"postgres", 
+				"password"); 
+			stmt = conn.createStatement();
+			 
+			stmt.execute(SQL);
+			
+			conn.close();
+			stmt.close();
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false ;
+		} 
+		
+		return true;
+		 
 		
 	}
 }
