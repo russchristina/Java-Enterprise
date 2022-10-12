@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class updateDB {
+public class updateSQL {
 	
 	public static void main(String [] args) {
 
 	String sqlQ = "INSERT INTO employee VALUES (default, 'Sam', 'California', 22)";
-	updateDB uDB = new updateDB();
+	updateSQL uDB = new updateSQL();
 	uDB.addToDB(sqlQ);
 	}
 	public void addToDB (String sqlQ) {
