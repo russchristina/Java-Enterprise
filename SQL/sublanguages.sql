@@ -120,7 +120,7 @@ values(default, 'Christina', 'Texas', NULL, 29);
 INSERT INTO person VALUES(default, 'Sean', 'New York', 'Orange', 24);
 
 INSERT INTO person(person_name, person_state, favorite_color, person_age) 
-values('Jen', 'New York', 'Blue', 25);
+values('Jen', 'New York', 'Orange', 25);
 
 INSERT INTO person values(default, 'Jonathan G', 'Texas', 'Black', 30);
 
