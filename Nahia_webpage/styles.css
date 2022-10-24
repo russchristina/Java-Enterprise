@@ -1,0 +1,120 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+h1 {
+	font-family: "Permanent Marker", cursive;
+}
+
+header {
+	background-image: url("./resources/images/backgrounds/headerbackground.jpg");
+	background-size: contain;
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#mainHeader {
+	font-size: 100px;
+	color: rgb(176, 45, 253);
+	margin: 0;
+	text-shadow: 10px 10px rgb(0, 31, 30);
+	-webkit-text-stroke: 4px black;
+	background-color: rgba(255, 255, 255, 0.5);
+	font-family: "Permanent Marker", cursive;
+}
+
+#subHeader {
+	font-size: 50px;
+	font-weight: bold;
+	color: rgb(222, 6, 208);
+	text-shadow: 5px 5px black;
+	-webkit-text-stroke: 3px rgb(5, 0, 107);
+	background-color: rgba(255, 255, 255, 0.5);
+	font-family: "Permanent Marker", cursive;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	background-color: rgba(251, 251, 178, 0.671);
+	border: 2px solid rgb(220, 253, 3);
+}
+
+#navbody {
+	background-color: rgb(255, 255, 90);
+	width: 200px;
+	height: 620px;
+	display: flex;
+	align-items: center;
+	border: 5px black;
+	border-style: dotted;
+}
+
+nav {
+	width: 200px;
+	height: 100%;
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	justify-content: space-evenly;
+	padding: 5px;
+}
+
+h4 {
+	font-weight: bold;
+	font-family: "Permanent Marker", cursive;
+}
+
+ul {
+	list-style: none;
+}
+
+a,
+a:link,
+a:visited {
+	text-decoration: none;
+	color: palevioletred;
+	font-weight: bold;
+}
+
+#mainBody {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.factList {
+	height: 540px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+ol li {
+	font-weight: bold;
+}
+
+#breeds {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+footer {
+	background-image: url("resources/images/backgrounds/footerbackground.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	height: 200px;
+	width: 100%;
+}
