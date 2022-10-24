@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cryptid Truth</title>
+        <meta charset="utf-8">
+        <style> 
+            body{
+                background-color: black;
+                color: #00ff00;
+                font-family: Courier;
+            }
+            h1 { 
+                text-align:center;  
+                font-family: Impact;
+            } 
+            h2 {
+                font-family: Impact;
+                padding-left: 50px;
+            } 
+            table{
+                padding: 50px;
+                text-align: center;
+            }
+            td{
+                padding: 10px;
+            }
+            p{
+                padding: 50px;
+            }
+            .submission{ 
+                border-width: medium 10px medium 10px;
+                border-color: #00ff00;
+                border-style: solid;
+            } 
+            .greeting { 
+                font-style:bold; 
+                font-size:20px; 
+            } 
+       </style> 
+    </head>
+    <body>
+        <h1>CRYPTIDS CAUGHT ON CAMERA</h1>
+        <p>This webpage is dedicated to collecing the undeniable, utterly convincing, hard evidence
+            of bigfoot, werewolves, mothmen, dogmen, aliens, mermaids,
+            yetis, fairies, dwarves, gnomes, greys, mantis people, time travelers, men in black,
+            and other cryptids. Brave world wide web warriors can submit
+            their own photographs to expose the truth.
+        </p>
+
+        <div>
+            <h2>
+            Check out the latest reported sightings:
+            </h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Location</th>
+                        <th>Date</th>
+                        <th>Photo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ann Arbor, Michigan</td>
+                        <td>3/11/1999</td>
+                        <td><img src="cryptid1.jpg"></td>
+                    </tr>
+                    <tr>
+                        <td>Sioux Falls, South Dakota</td>
+                        <td>10/21/2001</td>
+                        <td><img src="cryptid2.jpg"></td>
+                    </tr>
+                    <tr>
+                        <td>Wharton, New Jersey</td>
+                        <td>8/7/1991</td>
+                        <td><img src="cryptid3.jpg"></td>
+                    </tr>
+                    <tr>
+                        <td>Lone Pine, California</td>
+                        <td>2/13/2000</td>
+                        <td><img src="cryptid4.jpg"></td>
+                    </tr>
+                    <tr>
+                        <td>Springdale, Washington</td>
+                        <td>8/29/1996</td>
+                        <td><img src="cryptid5.jpg"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="submission">
+            Have you photogaphed a cryptid? Submit your evidence for the world to see:
+            <form>
+                <label for="location">Location:</label>
+                <input type="text" name="location"/>
+                <br/>
+                <label for="location">Date:</label>
+                <input type="text" name="date"/>
+                <br/>
+                <label for="fileselect">Upload:</label>
+                <input type="file"/>
+                <br/>
+                <input type="submit" value="Submit"/>
+            </form>
+        </div>
+    </body>
+</html>
