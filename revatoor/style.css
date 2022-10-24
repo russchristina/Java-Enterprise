@@ -1,0 +1,32 @@
+body{
+	background-color : 4f529c;
+	color : white;
+	
+}
+
+#header, #nav, #main{
+	border-style : solid;
+	border-color : #b5b5c4;
+	border-radius: 5px;
+	margin: 4px;
+}
+
+#nav{
+	float: left;
+
+	height : 50%;
+}
+
+#nav a {
+	color: white;
+}
+
+#nav img {
+	display: block;
+}
+
+#main{
+	width :90%;
+	height : 50%;
+	float : right;
+}
