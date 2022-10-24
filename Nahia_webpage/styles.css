@@ -72,12 +72,20 @@ ul {
 	list-style: none;
 }
 
+.links {
+	display: flex;
+	flex-direction: column;
+	width: 190px;
+	padding: 10px;
+}
+
 a,
 a:link,
 a:visited {
 	text-decoration: none;
 	color: palevioletred;
 	font-weight: bold;
+	font-size: 16px;
 }
 
 #mainBody {
