@@ -1,0 +1,67 @@
+.navigation-bar {
+  background-color: rgba(60, 143, 239, 0.381);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#title {
+  margin-right: 1em;
+}
+
+#left-navigation-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#left-navigation-bar-list {
+  list-style-type: none;
+  display: flex;
+  align-items: flex-end;
+}
+
+#textBox,
+#searchBtn {
+  height: fit-content;
+  width: fit-content;
+  margin-right: 1em;
+}
+
+#right-navigation-bar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.gameImage {
+  max-height: 75px;
+}
+
+.NewGames {
+  display: flex;
+  color: blue;
+
+  /* align-items: flex-start; */
+}
+
+#newGamesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  /* height: 600px;  */
+  width: fit-content;
+
+}
+
+.topGamesContatiner {
+  /* display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 500px;
+  height: 400px;
+  align-content: space-between; */
+}
+
+#categoriesContainer {
+  display: flex;
+  justify-content: space-around;
+}
