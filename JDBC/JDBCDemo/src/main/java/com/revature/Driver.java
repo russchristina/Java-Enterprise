@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.revature.model.Person;
+import com.revature.repository.PersonRepository;
+
 /*
  * While I'm at my meeting:
  * 
@@ -54,9 +57,17 @@ public class Driver {
 //			e.printStackTrace();
 //		}
 		
+		PersonRepository personRepository = new PersonRepository();
+		Person p = new Person(6, "Kim', 'IL', 'Green', 50); drop table person; --", "Illinois", "Green", 50);
+		personRepository.save(p);
+//		personRepository.update(p);
+//		personRepository.deleteById(1);
+		System.out.println(personRepository.findAll());
+		
 		Statement stmt = null;
 		ResultSet set = null;
-		final String SQL = "SELECT * FROM person where person_id = 1";
+		
+		final String SQL = "SELECT * FROM person where person_id = 6";
 		
 		
 		/*
@@ -87,13 +98,18 @@ public class Driver {
 			set.next();
 			
 			/*
-			 * We have to extract the data from each row in a ResultSet in order to use it.
+			 * We have to extract the data from each row in a ResultSet in order to use it. We
+			 * can store all of the information from each column using a Person object.
 			 */
-			System.out.println(set.getInt(1));
-			System.out.println(set.getString(2));
-			System.out.println(set.getString(3));
-			System.out.println(set.getString(4));
-			System.out.println(set.getInt(5));
+			Person retrievedPerson = new Person(
+					set.getInt(1),
+					set.getString(2),
+					set.getString(3),
+					set.getString(4),
+					set.getInt(5)
+					);
+			
+			System.out.println(retrievedPerson);
 	
 		}catch(SQLException e) {
 			e.printStackTrace();

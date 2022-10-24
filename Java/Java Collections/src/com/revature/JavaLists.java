@@ -3,6 +3,7 @@ package com.revature;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 
 public class JavaLists {
 
@@ -36,6 +37,12 @@ public class JavaLists {
 		 */
 		
 		List<Integer> myLinkedList = new LinkedList<>();
+		
+		/*
+		 * As an addendum, there is also a type called Vector in Java. Note that Vector is a 
+		 * thread-safe implementation List. This means that it's slower.
+		 */
+		List<Integer> myVector = new Vector<>();
 		
 		/*
 		 * Note that Java autoboxes primitive data types as their wrapper class representations

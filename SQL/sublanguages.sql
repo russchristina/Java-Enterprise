@@ -44,11 +44,31 @@
  * NOTE: By exploration, I've found that you can have "NULL"
  * as many times as you want for a "unique" column.
  */
+
+/*
+ * This color table is a lookup table. It is a simple table that exists
+ * to be referred to. Ideally, I would use a numeric key to look up
+ * the name of a color, but that's not a rule.
+ */
+-- CASCADE allows you to ignore constraints when dropping an entity.
+DROP TABLE color CASCADE;
+CREATE TABLE IF NOT EXISTS color(
+	color_name VARCHAR PRIMARY KEY,
+	color_hexcode VARCHAR,
+	color_mood VARCHAR
+);
+
+/*
+ * We've added a foreign key constraint to the person table. The
+ * "favorite_color" column must contain either NULL or a value
+ * that exists on the color table.
+ */
 DROP TABLE person;
 CREATE TABLE IF NOT EXISTS person(
 	person_id SERIAL PRIMARY KEY,
 	person_name VARCHAR(50) NOT NULL,
-	person_state VARCHAR NOT NULL
+	person_state VARCHAR NOT NULL,
+	favorite_color VARCHAR REFERENCES color(color_name)
 	-- CONSTRAINT person_id_pkey PRIMARY KEY(person_id)
 );
 
@@ -87,21 +107,26 @@ DROP COLUMN person_age;
 
 -- Selecting all of the records and columns from a table
 SELECT * FROM person;
+SELECT * FROM color;
 -- You can also select specific records using a "where" clause.
 SELECT * FROM person WHERE person_age BETWEEN 22 AND 24;
 -- Yes, you can use functions in SQL. This is called a scalar function.
 SELECT * FROM person WHERE lower(person_name) = 'jen';
 
 -- Inserting a new record:
-INSERT INTO person(person_id, person_name, person_state, person_age) 
-values(default, 'Christina', 'Texas', 29);
+INSERT INTO person(person_id, person_name, person_state, favorite_color, person_age) 
+values(default, 'Christina', 'Texas', NULL, 29);
 
-INSERT INTO person VALUES(default, 'Sean', 'New York', 24);
+INSERT INTO person VALUES(default, 'Sean', 'New York', 'Orange', 24);
 
-INSERT INTO person(person_name, person_state, person_age) 
-values('Jen', 'New York', 25);
+INSERT INTO person(person_name, person_state, favorite_color, person_age) 
+values('Jen', 'New York', 'Orange', 25);
 
-INSERT INTO person values(default, 'Jonathan G', 'Texas', 30);
+INSERT INTO person values(default, 'Jonathan G', 'Texas', 'Black', 30);
+
+INSERT INTO color values('Orange', '#FFA500', 'not yet angry');
+INSERT INTO color values('Red', '#FFA545', 'very red'), 
+('Green', '#FFA567', 'envious');
 
 -- Of course, sometimes we need to update records. Always use a where clause.
 UPDATE person SET person_id = 3 WHERE person_name = 'Jen';

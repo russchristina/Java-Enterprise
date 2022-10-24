@@ -58,7 +58,8 @@ public class BasicFileIO {
 		 */
 
 	
-		try (BufferedWriter myWriter = Files.newBufferedWriter(Path.of("words.txt"), StandardOpenOption.APPEND)) {
+		try (BufferedWriter myWriter = 
+				Files.newBufferedWriter(Path.of("words.txt"), StandardOpenOption.APPEND)) {
 			myWriter.write("writing stuff using the modern Files API");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
