@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html><head>
+    
+    <style>
+    html, body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .flex-master {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: 100%;
+        overflow: auto;
+    }
+    .page-header {
+        flex: none; 
+        padding: 1px;
+       padding-left: 10px;
+        font-size: 3em;
+        font-style: italic;
+        background: black;
+        color: silver;
+        
+    }
+    .genre {
+        font-size: small;
+        padding-top: 1px;
+    }
+    .page-content {
+        flex: 1;
+        overflow: auto; 
+        display: flex;
+        flex-direction: column;
+    }
+    .about {
+        flex: none;
+        background: #cb7272;
+        padding: 20px;
+        overflow: auto;
+        color: white;
+        text-align: center;
+    }
+    .content-container {
+        flex: 1 1 auto;
+        background: black;
+        padding: 20px;
+        width: 100%;
+        overflow-y: auto;
+        color: white;
+
+        display: flex; 
+        flex-direction: column-reverse;
+    }
+    .main-content {
+        flex: 1 1 auto;
+        width: 100%;
+        padding: 10px;
+        table-layout: fixed;
+    }
+    .cover {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+
+        display: flex; 
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .book {
+        flex: none;
+        align-self: center;
+        padding: 5px;
+        margin: 15px;
+        width: 150px;
+       
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    footer {
+        flex: 0 0 auto;
+        background: black;
+        color: white;
+        padding: 10px;
+    }
+    </style>
+</head>
+<body>
+    <div class="flex-master">
+        <header class="page-header">
+            K.R. Kimball 
+            <small class="genre">Fiction & Romance</small>
+        </header>
+    <div class="page-content">
+        <nav class="about">
+            <h3 style="font-style:italic">About me</h3>
+            <p>
+                An aspiring author just doing what I love most! Kick 
+                back, grab your wine, and dive right in! Or don't- I 
+                can't make you. Read my books on 
+                <a href="https://www.wattpad.com/user/Kxrstii">WattPad!</a>
+            </p>
+        </nav>
+        <div class="content-container">
+            <table class="main-content">
+                <thead>
+                    <tr>
+                        <th>Jax Haper: Next in Line </th>
+                        <th>Game Changer</th>
+                        <th>Nameless Love</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:top">
+                            Jax Harper, a shy and soon-to-be hero, has just 
+                            lost his mother and is having crazy dreams. 
+                            Little does he know, these dreams will drag him 
+                            into a world he has never known, yet is destined 
+                            to save.</td>
+                        <td style="vertical-align:top">
+                            When aspiring video game designer Kyra Burke 
+                             meets an unexpected online companion, her life 
+                             is turned upside down. You will love this 
+                             modern spin on a classic love story!</td>
+                        <td style="vertical-align:top">
+                            When Twenty-Two year old, Cassie Lane, drunkenly 
+                            decides to take a vacation alone, she meets and 
+                            eventually falls for a bartender. They agree that 
+                            this is strictly a vacationship and they should not 
+                            share each other's names in order to avoid reuniting 
+                            after she returns home.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <aside class="cover">
+                <div class="book">
+                    <img src="https://i.postimg.cc/yxRQFs8b/img-jax.jpg" 
+                    alt="Jax Harper Bookcover"
+                    width="300px"
+                    height="300px">
+                </div> 
+                <div class="book">
+                    <img src="https://i.postimg.cc/hPF3KzCW/Game-changer.jpg" 
+                    alt="Game Changer Bookcover"
+                    width="300"
+                    height="300">
+                </div>
+                <div class="book">
+                    <img src="https://i.postimg.cc/HstSgpVT/Nameless-Love.jpg" 
+                    alt="Nameless Love Bookcover"
+                    width="300px"
+                    height="300px">
+                </div>
+            </aside>
+        </div>
+    </div>
+    <footer>
+        <small>Nobel Prize Winner, 2025</small>
+    </footer>
+</div>
+</body></html>
