@@ -1,0 +1,42 @@
+#header {
+  background-color: #04329c;
+  color: white;
+  font-family: Arial Rounded MT Bold;
+  padding: 35px;
+  width: 100%;
+  margin: 0px;
+  border-radius: 6px;
+}
+
+#links {
+  border-radius: 1px;
+  margin: 1px;
+  float: right;
+  width: ;
+  height: 50%;
+  word-spacing: 25px;
+}
+
+#vidHeader {
+  background-color: #04329c;
+  color: white;
+  border-radius: 6px;
+  padding: 10px;
+  margin: 20px;
+  float: left;
+  width: 450px;
+  height: 400px;
+  line-height: 25px;
+}
+
+#hot {
+  float: left;
+  background-color: #04329c;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 20px;
+  width: 450px;
+  height: 400px;
+  line-height: 25px;
+}
