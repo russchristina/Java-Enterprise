@@ -18,7 +18,7 @@ body
 table
 {
     text-align: center;
-    font-size: 80px;
+    font-size: 25px;
     vertical-align: top;
 }
 
@@ -27,3 +27,26 @@ h1
     font-size: 80px;
 }
 
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: yellowgreen;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  
+  a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+  }
