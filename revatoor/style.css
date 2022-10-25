@@ -14,7 +14,7 @@ body{
 #nav{
 	float: left;
 
-	height : 50%;
+	height : 60%;
 }
 
 #nav a {
@@ -26,7 +26,7 @@ body{
 }
 
 #main{
-	width :90%;
-	height : 50%;
+	width :80%;
+	height : 60%;
 	float : right;
 }
