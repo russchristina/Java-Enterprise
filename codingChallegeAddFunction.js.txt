@@ -1,0 +1,6 @@
+var add = function(a,b){
+    if(b) return a+b 
+    return function(y){
+        return a+y;
+    }
+}
