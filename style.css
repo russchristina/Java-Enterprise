@@ -1,0 +1,81 @@
+body{
+	background-color: 4f529c;
+	color: black;
+}
+.main {
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 1rem 1rem;
+    text-align: center;
+    background-color: lightskyblue;
+}
+.extra {
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 1rem 1rem;
+    text-align: center;
+    background-color: rgb(143, 210, 143);
+}
+.monster {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 1rem 1rem;
+    vertical-align: top;
+    text-align: left;
+    background-color: orange;
+}
+.ritual {
+    background-color: rgb(117, 117, 243);
+}
+.fusion {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 1rem 1rem;
+    vertical-align: top;
+    text-align: left;
+    background-color: rgb(154, 53, 154);
+}
+.synchro {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 1rem 1rem;
+    vertical-align: top;
+    text-align: left;
+    background-color: white;
+}
+.xyz {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 1rem 1rem;
+    vertical-align: top;
+    text-align: left;
+    background-color: black;
+    color: white;
+}
+.link {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 1rem 1rem;
+    vertical-align: top;
+    text-align: left;
+    background-color: blue;
+    color: white;
+}
+.spell {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 1rem 1rem;
+    vertical-align: top;
+    text-align: left;
+    background-color: green;
+    color: white;
+}
+.trap {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 1rem 1rem;
+    vertical-align: top;
+    text-align: left;
+    background-color: violet;
+    color: white;
+}
