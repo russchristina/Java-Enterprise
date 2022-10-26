@@ -1,7 +1,8 @@
-function add() {
-    let sum = 0;
-  for (var i = 0; i < arguments.length; i++) {
-    sum += arguments[i];
+function add(num1, num2){
+  if(num2 == undefined){
+      return function (num3) {return num1 + num3;};
   }
-    console.log(sum);
+  else{
+    return num1 + num2;
+  }
 }
