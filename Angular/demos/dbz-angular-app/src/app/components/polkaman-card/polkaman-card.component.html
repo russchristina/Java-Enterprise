@@ -1,0 +1,28 @@
+<!--We use structural directives directly in the template. Structural directives manipulate the DOM in some way. Note that a structural directive is 
+    preceded by a * symbol.-->
+<div class="pokemon_image">
+    <!--COMMENTED OUT TO SHOW *ngFor-->
+<!-- <div *ngIf="ditto.polkaman_name; else orElse"  class="pokemon_image"> -->
+    <!--For element attributes, we don't use string interpolation as our form of databinding. We use a type of databinding called "property binding".-->
+    <img [src]="p.polkaman_image" id="shiny_img" alt="a pokemon">
+    <h1 id="pokemon_name">
+        <!-- This syntax is called "string interpolation. You should recognize it as it similar to the interpolation we see with template literals in JS. It is indeed a type of "databinding" as we are binding data from the class to the template. -->
+        {{p.polkaman_name}}
+    </h1>
+    <h2 id="pokemon_id">
+        {{p.polkaman_id}}
+    </h2>
+    <p id="pokemon_description">
+        {{p.polkaman_description}}
+    </p>
+</div>
+<!--When using *ngIf, you can create an "else" block.
+This is just HTML that will be rendered if *ngIf
+evaluates to "false". We use "ng-template to create
+the else block.
+
+If you have more than 2 option blocks for rendering,
+please use ngSwitch instead.-->
+<ng-template #orElse>
+    <h2>Ooops. Looks like the polkaman name is empty!</h2>
+</ng-template>

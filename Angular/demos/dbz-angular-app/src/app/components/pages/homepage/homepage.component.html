@@ -1,12 +1,17 @@
-<div class="pokemon_image">
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png" id="shiny_img" alt="a pokemon">
-    <h1 id="pokemon_name">
-        Ditto
-    </h1>
-    <h2 id="pokemon_id">
-        132
-    </h2>
-    <p id="pokemon_description">
-        This is a generic description.
-    </p>
+
+<!--The *ngFor directive is another structural directive.
+This directive allows you to render an element and
+all of its contents several times.
+
+Note that the Polkaman Card component is now a child component of our Home Page component. This means that we now have to think about how to pass state from the parent component to the child component.-->
+<app-polkaman-card *ngFor="let p of polkamans"></app-polkaman-card>
+
+<div class="container">
+    <form>
+        <input [(ngModel)]="polkamans[0].polkaman_image" name="polka_image" placeholder="image" type="url"/>
+        <input [(ngModel)]="polkamans[0].polkaman_name" name="polka_name" placeholder="name" type="text"/>
+        <input [(ngModel)]="polkamans[0].polkaman_id" name="polka_id" placeholder="0" type="number"/>
+        <input [(ngModel)]="polkamans[0].polkaman_description" name="polka_description" placeholder="description" type="text"/>
+        <input (click)="submitPolkaman()" type="button" value="Submit New Polkaman">
+    </form>
 </div>
