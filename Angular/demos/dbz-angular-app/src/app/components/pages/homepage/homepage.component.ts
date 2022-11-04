@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Polkaman } from 'src/app/models/Polkaman';
+import { PolkamanService } from 'src/app/services/polkaman.service';
 
 /**
  * The @Component decorators marks a class as a
@@ -45,37 +46,78 @@ import { Polkaman } from 'src/app/models/Polkaman';
 export class HomepageComponent implements OnInit, OnDestroy {
 
   /**
+   * This is the lifecycle hook that is called after a
+   * component is instantiated.
+   */
+  ngOnInit(): void {
+    this.retrievePolkamansFromService()
+  }
+
+  /**
    * Let's add some state to the component.
    */
 
   //  ditto:Polkaman = new Polkaman('Ditto', 'This is a generic description', 132, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png')
 
    /**
-    * An array of polkamans
+    * An array of polkamans. It is currently any because
+    * I suspect that I have to fix my DTO.
     */
-   polkamans:Polkaman[] = [new Polkaman('Ditto', 'This is a generic description', 132, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'),
-  new Polkaman('Electricity Mouse', 'electric rodent', 2, '', ''), new Polkaman('Mime Polkaman', 'a mime but in Polkamans instead', 30, '', ''), new Polkaman('literally a rock', 'but which one', 20, '', '')];
+   polkamans:any;
 
   /**
    * This is the syntax for creating a constructor in TS.
+   * Let's use dependency injection to tell Angular to 
+   * inject our PolkamanService for us.
    */
-  constructor() { }
+  constructor(private polkamanService:PolkamanService) { }
+
+  /**
+   * Let's use our injected service to request all of
+   * the Polkamans. We'll make a method that does this.
+   */
+  retrievePolkamansFromService():void{
+    /**
+     * Note that the HttpClient methods do NOT return
+     * a simple JSOn response body. They instead return
+     * a type called an "Observable". Observables, like
+     * promises, are used to handle asynchronous tasks
+     * and represent eventual values. 
+     * 
+     * That said, observables are not exactly 
+     * like promises. Observables are "lazy" in that
+     * you don't get a value until you subscribe to
+     * them. Observables represent streams of data. This
+     * means that Observables open for use until you
+     * unsubscribe from them. As such, we say that we
+     * are following a Pub/Sub (Publisher/Subscriber)
+     * pattern.
+     */
+    this.polkamanService.findAllPolkamans().subscribe(
+      //The first callback function allows you access the
+      //next value in the stream.
+
+      //NOTE: Make a follow-up request for all Polkaman's data
+      (data) => {
+        this.polkamans = data
+        console.log(data)
+        console.log(this.polkamans.results)
+      },
+      () => {
+        console.log("didn't get any polkamans...awwww")
+      }
+    )
+  }
 
   /**
    * This is the method that should be called when a user
    * clicks the "Submit Polkaman" button.
    */
 
-   submitPolkaman():void{
-    console.log("the button was clicked")
+   submitPolkaman(newPolkaman:Polkaman):void{
+    this.polkamans.push(newPolkaman);
+    console.log(this.polkamans);
    }
-
-  /**
-   * This is the lifecycle hook that is called after a
-   * component is instantiated.
-   */
-  ngOnInit(): void {
-  }
 
   /**
    * This is the hook that is called right before a
