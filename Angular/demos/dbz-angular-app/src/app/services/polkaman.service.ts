@@ -41,7 +41,11 @@ export class PolkamanService {
    * Now let's write a method that makes a GET request to
    * the PokeAPI for a list of Polkamans.
    */
-  findAllPolkamans():Observable<Polkaman[]>{
-    return this.httpClient.get<Polkaman[]>('https://pokeapi.co/api/v2/pokemon?limit=10')
+  findAllPolkamans():Observable<any>{
+    return this.httpClient.get<any>('https://pokeapi.co/api/v2/pokemon?limit=10')
+  }
+
+  findSpecificPolkaman(url:string):Observable<Polkaman>{
+    return this.httpClient.get<Polkaman>(url);
   }
 }

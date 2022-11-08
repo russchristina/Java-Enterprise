@@ -65,6 +65,16 @@ export class HomepageComponent implements OnInit, OnDestroy {
     */
    polkamans:any;
 
+   /**
+    * Recall that we have a feature that allows our children
+    * components to emit a value (a Polkaman) to our parent
+    * component. In order to keep this intact, I will just
+    * make a polkamansArray.
+    * @param polkamanService 
+    */
+
+    polkamansArray:Polkaman[] = [];
+
   /**
    * This is the syntax for creating a constructor in TS.
    * Let's use dependency injection to tell Angular to 
@@ -115,7 +125,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
    */
 
    submitPolkaman(newPolkaman:Polkaman):void{
-    this.polkamans.push(newPolkaman);
+    this.polkamansArray.push(newPolkaman);
     console.log(this.polkamans);
    }
 

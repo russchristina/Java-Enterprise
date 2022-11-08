@@ -14,7 +14,9 @@ Note that we've also added an event emitter to the
 child component here. When an event occurs on the
 child component, we pass its value up to the parent
 component for use there.-->
-<app-polkaman-card *ngFor="let polka of polkamans.results" [p]="polka" (polkamanUpdateEvent)="submitPolkaman($event)"></app-polkaman-card>
+<div class="container">
+    <app-polkaman-card *ngFor="let polka of polkamans.results" [p]="polka" (polkamanUpdateEvent)="submitPolkaman($event)"></app-polkaman-card>
+</div>
 
 <div class="container">
     <form>

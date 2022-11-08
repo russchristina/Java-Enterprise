@@ -4,18 +4,18 @@
     <!--COMMENTED OUT TO SHOW *ngFor-->
 <!-- <div *ngIf="ditto.polkaman_name; else orElse"  class="pokemon_image"> -->
     <!--For element attributes, we don't use string interpolation as our form of databinding. We use a type of databinding called "property binding".-->
-    <img [src]="p.polkaman_image" id="shiny_img" alt="a pokemon">
+    <img [src]="realPolkaman.sprites.front_default" id="shiny_img" alt="a pokemon">
     <h1 id="pokemon_name">
         <!-- This syntax is called "string interpolation. You should recognize it as it similar to the interpolation we see with template literals in JS. It is indeed a type of "databinding" as we are binding data from the class to the template. 
         
         Note that we can apply pipes to our template in order to transform data in our view.-->
-        {{p.name | uppercase}}
+        {{realPolkaman.name | uppercase}}
     </h1>
     <h2 id="pokemon_id">
-        {{p.polkaman_id}}
+        {{realPolkaman.id}}
     </h2>
     <p id="pokemon_description">
-        {{p.polkaman_description}}
+        {{realPolkaman.name | titlecase}} is a wonderful Polkaman that doesn't have a specific description yet.
     </p>
     <button (click)="duplicatePolkaman(p)">Duplicate</button>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Polkaman } from 'src/app/models/Polkaman';
+import { PolkamanService } from 'src/app/services/polkaman.service';
 
 @Component({
   selector: 'app-polkaman-card',
@@ -17,9 +18,16 @@ export class PolkamanCardComponent implements OnInit {
    * Since our Polkaman is coming from the parent component,
    * we must specify that it is passed down to this component
    * by using the @Input decorator.
+   * 
+   * Note that what I am accepting from the parent is not
+   * a full Polkaman; it's only the polkaman's name and
+   * a URL that I will need to use to grab the full Polkaman
+   * info.
    */
   @Input()
-  p!:any; //change back when your DTO is fixed
+  p!:any; //NOT A REAL POLKAMAN
+
+  realPolkaman:Polkaman = new Polkaman('', '', 0, {});
 
   /**
    * Sometimes, we want a child to be able to pass state
@@ -36,9 +44,10 @@ export class PolkamanCardComponent implements OnInit {
    @Output()
    polkamanUpdateEvent = new EventEmitter<Polkaman>();
 
-  constructor() { }
+  constructor(private polkamanService:PolkamanService) { }
 
   ngOnInit(): void {
+    this.findSpecificPolkaman()
   }
 
   /**
@@ -46,5 +55,16 @@ export class PolkamanCardComponent implements OnInit {
    */
   duplicatePolkaman(duplicatedPolkaman: Polkaman){
     this.polkamanUpdateEvent.emit(duplicatedPolkaman);
+  }
+
+  findSpecificPolkaman(){
+    this.polkamanService.findSpecificPolkaman(this.p.url).subscribe(
+      (data) => {
+        console.log(data)
+        this.realPolkaman = data
+    }),
+    () => {
+      console.log('retrieval of individual polkaman failed')
+    }
   }
 }
