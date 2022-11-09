@@ -1,11 +1,23 @@
 package com.revature.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.Polkaman;
+import com.revature.service.PolkamanService;
 
 /**
  * 
@@ -34,8 +46,19 @@ import com.revature.model.Polkaman;
  * "/polkaman".
  */
 @RequestMapping(path = "/polkaman")
+/*
+ * If you are trying to hit these endpoints from a different origin (e.g. from an
+ * Angular application), you can use the @CrossOrigin annotation to specify that you
+ * want this application to accept requests from different origins.
+ */
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class PolkamanController {
 
+	//Tell Spring to inject the Polkaman service bean from the container into the
+	//polkamanController bean.
+	@Autowired
+	private PolkamanService polkamanService;
+	
 	/*
 	 * This method defines a subresource. In order to access this resource, the client
 	 * should use the path "http://localhost:8080/ProjectName/polkaman/hello".
@@ -44,5 +67,68 @@ public class PolkamanController {
 	public String sayHello() {
 		return "Hello, World!";
 	}
+	
+	/*
+	 * @GetMapping is a specialization of @RequestMapping that assumes the HTTP verb is GET.
+	 * 
+	 * Note that besides the path attribute, there are other useful attributes. If you have
+	 * an endpoint that writes to the response body, you will want to use the "produces"
+	 * attribute to specify what the content type that is written to the response body is.
+	 * Another useful attribute is the "consumes" attribute. This is used when you have an
+	 * endpoint that accepts data from the client but you're only willing to accept a certain
+	 * format for that data.
+	 */
+	@GetMapping(path = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Polkaman> findAll(){
+		/*
+		 * The return value for a method is serialized as JSON.
+		 */
+		return this.polkamanService.findAll();
+	}
+	
+	/*
+	 * This method will accept a Polkaman as JSON from the client. We can easily
+	 * take JSON from the request body and immediately store it as a Polkaman object
+	 * in our Java application by using the @RequestBody annotation.
+	 */
+	@PostMapping(path = "/new", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void save(@RequestBody Polkaman polkaman) {
+		System.out.println(polkaman);
+	}
+	
+	/*
+	 * This method will accept a GET request. It will return a single Polkaman based
+	 * on the id that is supplied by the client. The id will be supplied as a part of
+	 * the URL (e.g. http://localhost:8080/SpringWeb/polkaman/1).
+	 * 
+	 * In order to specify that a method parameter should be bound to a path variable,
+	 * we can use the @PathVariable annotation before that parameter.
+	 * 
+	 * In this example, we are using a ResponseEntity. This is a bit more elegant in that
+	 * it allows us to populate the response body while also specifying a specific HTTP
+	 * status code.
+	 */
+	
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<Polkaman> findOne(@PathVariable int id) {
+		return ResponseEntity.of(this.polkamanService.findOne(id));
+	}
+	
+	/*
+	 * We can also easily grab query parameters from query strings using the @RequestParam
+	 * annotation. Note that the parameter names that we use in the method will be used
+	 * as the request parameter names by default, but this can be changed by using the
+	 * "name" attribute for the @RequestParam.
+	 */
+	@GetMapping(path = "/between")
+	public ResponseEntity<List<Polkaman>> findAllBetween(@RequestParam int id1, @RequestParam int id2, 
+			@RequestParam(required = false) String sort){
+		
+		List<Polkaman> polkamans = this.polkamanService.findAllBetween(id1, id2);
+		HttpStatus status = (polkamans.isEmpty()) ? HttpStatus.NOT_FOUND : HttpStatus.OK;
+		return new ResponseEntity<>(polkamans, status);
+	}
+	
+	
 	
 }

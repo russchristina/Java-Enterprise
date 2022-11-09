@@ -1,6 +1,8 @@
 package com.revature.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,5 +48,30 @@ public class PolkamanService {
 	
 	public List<Polkaman> findAll(){
 		return this.polkamanRepository.findAll();
+	}
+	
+	public Optional<Polkaman> findOne(int id) {
+		/*
+		 * In Java, the Optional type is designed to provide a less verbose syntax
+		 * for dealing with situations in which you are not sure that you will return
+		 * an object or null.
+		 */
+		Optional<Polkaman> retrievedPolkaman = Optional.empty();
+		List<Polkaman> allPolkamans = this.polkamanRepository.findAll();
+		for(Polkaman p : allPolkamans) {
+			if(p.getId() == id) retrievedPolkaman = Optional.of(p);
+		}
+		return retrievedPolkaman;
+	}
+	
+	public List<Polkaman> findAllBetween(int id1, int id2){
+		List<Polkaman> polkamansInRange = new ArrayList<>();
+		List<Polkaman> allPolkamans = this.polkamanRepository.findAll();
+		
+		for(Polkaman p : allPolkamans) {
+			if(p.getId() > id1 && p.getId() < id2) polkamansInRange.add(p);
+		}
+		
+		return polkamansInRange;
 	}
 }
