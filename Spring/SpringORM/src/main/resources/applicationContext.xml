@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- The beans tag is the root tag of an XML file that you use to configure your application
+context. And, yes, this file is used to configure our IOC container. For example, we
+can define Spring beans in this file. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- We can tell the framework to create instances of specific types within our XML file.
+We can do so by using the "bean" tag. The name for a bean is an alias (an identifier) that
+we can use to grab the bean later if we need it. Spring also needs to know the type of
+the bean it should add to the container.
+
+Beans are automatically "scoped" to "singleton" unless otherwise specified. This just
+means that Spring will only create a single instance of this class and reuse that
+instance everywhere in the application where the bean is requested. 
+
+Sometimes, beans rely on each other. For instance, my PolkamanService class requires a
+working instance of the PolkamanRepository. We can tell Spring what the relationship
+between our beans should be by doing what we call "bean wiring".
+
+Thus far, we've manually wired our beans together. That said, there is a way for Spring
+to determine which bean should be wired in; this is called auto-wiring. In this case,
+Spring automatically chooses the bean that should be wired in. Spring has 3 strategies
+for locating a bean in the container to wire in:
+
+byName: Spring looks for a bean in the container by its name (comparing it to a property
+name on the class where the injection needs to occur). This is a good option if you have
+several beans of the same type in the IOC container.
+
+byType: Spring looks for a bean in the container by its type (comparing it to a property
+type on the class where the injection needs to occur). Note that this will NOT work
+if you have multiple beans of the same type in the IOC container.
+
+constructor: Spring looks for a bean in the container by its type (but this time comparing
+to a constructor argument on the class where the injection needs to occur). Note that this
+will NOT work if you have multiple beans of the same type in your IOC container.
+-->
+<bean name="polkamanService" class="com.revature.service.PolkamanService" 
+scope="singleton" autowire="byName">
+	<!-- The property tag allows us to specify a dependency that a bean of this type
+	has (e.g. the service bean has a repository bean as a dependency). The "name"
+	attribute specifies the name of the property on the class. The "ref" attribute
+	specifies the bean (by name) in the container that we wish for Spring to inject. -->
+	<!-- <property name="polkamanRepository" ref="polkamanRepository"></property> -->
+	<!-- If you wish to use constructor injection instead, use "constructor-arg" instead.  -->
+	<!-- <constructor-arg index="0" ref="polkamanRepository"></constructor-arg> -->
+</bean>
+
+
+<bean name="polkamanRepository" class="com.revature.repository.PolkamanRepository"></bean>
+<bean name="polkamanRepository2" class="com.revature.repository.PolkamanRepository"></bean>
+
+
+</beans>
