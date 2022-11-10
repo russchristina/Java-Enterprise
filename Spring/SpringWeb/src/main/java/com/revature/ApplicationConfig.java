@@ -1,8 +1,11 @@
 package com.revature;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.util.DefaultUriBuilderFactory;
 
 /*
  * This is a class-based (largely driven by annotations) approach to configuring my
@@ -19,6 +22,22 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.revature"})
 public class ApplicationConfig /*extends WebMvcConfigurationSupport*/ {
+	
+	/*
+	 * We're going to tell Spring to add a RestTemplate bean to the IOC container.
+	 * We'll then grab this bean and autowire it in as needed.
+	 */
+	@Bean(name = "restTemplate")
+	public RestTemplate getRestTemplate() {
+		RestTemplate restTemplate = new RestTemplate();
+		/*
+		 * This step is optional, but it can be helpful to specify a base URL for all of
+		 * your HTTP requests.
+		 */
+		restTemplate.setUriTemplateHandler(
+				new DefaultUriBuilderFactory("https://pokeapi.co/api/v2/"));
+		return restTemplate;
+	}
 
 	/*
 	 * The default message converter did not work with my class-based configuration

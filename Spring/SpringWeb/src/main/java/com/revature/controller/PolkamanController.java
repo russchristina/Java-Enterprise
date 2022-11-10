@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.revature.model.Polkaman;
 import com.revature.service.PolkamanService;
@@ -58,6 +60,11 @@ public class PolkamanController {
 	//polkamanController bean.
 	@Autowired
 	private PolkamanService polkamanService;
+	/*
+	 * We're wiring in the RestTemplate bean that has been added to the IOC container.
+	 */
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	/*
 	 * This method defines a subresource. In order to access this resource, the client
@@ -127,6 +134,24 @@ public class PolkamanController {
 		List<Polkaman> polkamans = this.polkamanService.findAllBetween(id1, id2);
 		HttpStatus status = (polkamans.isEmpty()) ? HttpStatus.NOT_FOUND : HttpStatus.OK;
 		return new ResponseEntity<>(polkamans, status);
+	}
+	
+	/*
+	 * We will make an endpoint that allows our clients to make a request for a polkaman
+	 * from the Pokeapi. Our API will then make an HTTP request to the Pokeapi and
+	 * send the client the polkaman in response. In order to make an HTTP request
+	 * from our backend, we will have to use a RestTemplate.
+	 */
+	
+	@GetMapping(path = "/pokeapi/{name}")
+	public Object findPolkamanFromThirdPartyApi(@PathVariable String name) {
+		//Come back and revise for URI later
+		/*
+		 * For this example, we don't have a DTO. That said, if you need one, feel free to make one
+		 * and replace the second argument. Instead of Object.class, you will want to use your DTO's
+		 * type.
+		 */
+		return this.restTemplate.getForObject("https://pokeapi.co/api/v2/pokemon/" + name, Object.class);
 	}
 	
 	
