@@ -1,0 +1,157 @@
+Spring
+Java
+SQL
+Angular
+
+Other
+=====
+
+JS
+TS
+DevOps
+Linux
+
+Who Answered Questions:
+
+John
+Axyl
+Nicholas
+William
+Christopher
+Bryan
+Joshua
+Vlad
+Nahia
+
+
+
+Questions
+=========
+
+Why would you use Java as your programming language of choice?
+	- OOP language. Popular. Large library. Considered general purpose.
+	- Platform indepedent. 
+	- Frameworks like Spring.
+
+JDK, JRE, JVM?
+	- JDK is the Java development kit. Includes everything you would need to compile Java code and run it. Includes JRE.
+	- JRE allows code to be run on the machine.
+	- JVM is virtual machine which...kind of mixing up the uses.
+
+Favorite feature of Java and why?
+	- Platform independence. That's not unique to Java, but it has very wide support. This support extends to basically everything.
+
+What is an exception?
+	- An exception is when something unexpected happens in the program. Two major types: checked and unchecked.
+	- Checked exceptions must be handled. Unchecked do not need to be handled.
+Error vs exception?
+	- Exceptions can be reasonably handled 
+Final vs finally?
+	- Finally happens at the end of a try-catch block.
+	- Final is used to make named constants. Value is set and cannot be changed.
+	- Can I add new elements to a final List? Yes. 
+Primitive data types?
+	- int
+	- short
+	- long
+	- double
+	- float
+	- boolean
+	- char
+	- byte
+
+What is an Angular component?
+	- Reusable piece of Angular application. Marked with a TS decorator. Comes with a class, template, stylesheet.
+	- Decorators you encounter in an Angular project? @Injectable - goes on a service class. @Input - for passing data from parent to
+	  child component. @Output - for passing data from child to parent.
+What is the purpose of using Angular services?
+	- You don't have to use them, but it's best to keep component classes lightweight.
+Data binding techniques in Angular?
+	- Your template has 3 types of basic binding: event binding, property binding, string interpolation, two-way data binding
+How to make an HTTP request in an Angular application?
+	- You can do it anyway you'd like, but the standard way is to use the built-in HTTP Client module that Angular provides.
+
+What is purpose of using Spring?
+	- Solves the problem of tightly coupled programming. Made for decoupling.
+	- Allows us to create and use beans. 
+	- Provides DI.
+What is a Spring Bean?
+	- An injectable component of a Spring application; its lifecycle is managed by Spring.
+How does Spring inject beans?
+	- Setter, constructor, field injection
+How does Spring identify a bean to inject?
+	- by bean name
+	- by bean type
+Spring stereotypes?
+	- Same thing as a @Component.
+	- Describes what a bean's purpose is while declaring it as a bean.
+	- Is there ever a reason to use @Component? Yes, he says, but he doesn't know when.
+
+What is your favorite module of Spring and why?
+	- ORM (Object Relational Mapping)
+	- It allowed a lot of decoupling.
+	- Spring Data JPA
+		- You can use annotations to use JPA to create the DB and tables. This is not a feature of Spring Data JPA. It's a feature
+		  of JPA and you can use it even if you're not using Spring Data JPA.
+		- Spring Data JPA expression language used with the JPARepository
+What is your least favorite module and why?
+	- Spring AOP
+	- It is extremely powerful.
+	- Allows us to address cross-cutting concerns.
+
+
+What is JDBC?
+	- JDBC is Java Database Connectivity. Allows a Java program to connect with a DB. You need to have the driver in your
+	  program.
+	- Interfaces of JDBC? ResultSet, PreparedStatement/Statement, Connection, DriverManager (not an interface)
+	- PreparedStatement? Prevents SQL injection by pre-compiling statements.
+	- CallableStatement? Allows you to call your own functions or stored procedures.
+
+JS vs TS?
+	- TS is transpiled into JS. TS has static typing. JS is weakly and dynamically typed.
+	- JS types? Number, String, boolean, null, undefined, object, symbol, function
+Callback functions?
+	- Function that is used later on; passed to another function and later invoked.
+
+Collection hierarchy in Java?
+	- List, Queue, and Set.
+	- List is organized based on the way the elements are put in.
+	- Queue follows a FIFO. 
+	- HashSet: Backed by a HashMap. But it's not in order. No duplicates. 
+
+What is it that makes a collection iterable?
+	- The Iterable interface.
+
+Lambda expression? Functional interface?
+	- Allows for functional programming in JS
+	- Passing around implementations as arguments
+	- Functional interfaces can have 1 and ONLY 1 abstract method.
+
+
+What are some ways of measuring object equality in Java?
+	- The == compares primitive data types. With objects, == compares only memory address. 
+	- The equals method is used for object.
+
+Comparator vs Comparable?
+	- One is internal to the class
+	- One is used for alternate sorting implementation.
+
+Garbage collection in Java?
+	- It is not required to manually execute the garbage collector, but we can REQUEST (not force) garbage with System.gc().
+	- Used when objects on the heap no longer have a reference from the stack.
+
+What is unit testing?
+	- Allows us to test our application at the most microlevel. We typically use JUnit for this in Java.
+
+Tell me about the String class?
+	- Strings are immutable; you can't change them. You can't concatenate things to a String.
+	- String pool? Exists on the heap. The place where strings are stored in memory. More memory efficiency.
+	- Difference between the String constructor and a string literal? Both can create objects, the String constructor always
+	  creates a new object.
+	- How would I create a child class of the String class? You can't. It's a final class.
+
+StringBuilder vs StringBuffer?
+	- StringBuffer is a threadsafe wrapper around String.
+	- StringBuilder is not threadsafe.
+
+
